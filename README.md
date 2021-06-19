@@ -38,5 +38,10 @@ yarn run test
 
 Give a ⭐️ if this project helped you!
 
+##Used links for UI
+1. (Main design)[https://www.behance.net/gallery/112601401/gateaway]
+2. (Auth UI)[https://www.behance.net/gallery/121326943/Point-of-Sale-App-UIUX-Design?tracking_source=search_projects_recommended%7CPOS]
+3. (Images for UI)[https://storyset.com/illustration/ice-cream-seller/cuate]
+
 ***
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
