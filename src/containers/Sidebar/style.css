@@ -1,0 +1,17 @@
+ul {
+    padding: 0;
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.nav-link {
+    list-style: none;
+}
+
+.active {
+    color: red;
+    font-weight: 700;
+    padding: 7px 25px;
+    background-color: rgb(255, 205, 205);
+}
