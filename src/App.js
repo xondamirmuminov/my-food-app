@@ -9,12 +9,14 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/login" component={Login} />
-        <Route path="/sign-up" component={SignUp} />
-        <Route component={PageNotFound} />
-      </Switch>
+      <div className="main-content" style={{ paddingLeft: 260 }}>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/login" exact component={Login} />
+          <Route path="/sign-up" exact component={SignUp} />
+          <Route component={PageNotFound} />
+        </Switch>
+      </div>
     </div>
   );
 }
