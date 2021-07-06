@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, createContext } from 'react';
 import Home from './containers/Home';
 import Login from './containers/Auth/Login';
 import SignUp from './containers/Auth/SignUp';
@@ -9,6 +9,10 @@ import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import keys from './configs/keys';
 import { refreshTokenSetup } from './utils';
 import Header from './containers/Header';
+import Products from './containers/Products';
+import AddProduct from './containers/Products/Add';
+import UserContext from './context/UserContext';
+
 
 const initialState = {
   user: {
@@ -17,6 +21,7 @@ const initialState = {
     firstName: '',
     lastName: '',
     userImage: '',
+    lang: 'uz'
   },
   isLoggedIn: false
 }
@@ -43,6 +48,8 @@ class App extends Component {
     });
   }
 
+  changeLanguage = lang => this.setState({ user: { ...this.state.user, lang } })
+
   onLogoutSuccess = (res) => {
     console.log(res)
     console.log('Logout success');
@@ -60,31 +67,38 @@ class App extends Component {
   render() {
     const { isLoggedIn, user } = this.state;
     console.log(user)
-    if (isLoggedIn) {
+    if (true) {
       return (
-        <div className="App">
-          <Sidebar
-            user={user}
-            LogOutComponent={<GoogleLogout
-              clientId={keys.GOOGLE_LOGIN_CLIENT_ID}
-              buttonText="Sign out"
-              onLogoutSuccess={this.onLogoutSuccess}
-              icon={false}
-            // render={() => (
-            //   <FaSignOutAlt onClick={} className="sidebar__link-icon" />
-            // )}
-            >
-            </GoogleLogout>}
-          />
-          <div className="main-content" style={{ paddingLeft: 260 }}>
-            <Header />
-            <Switch>
-              <Route path="/" exact component={Home} />
-              <Route path="/login" exact component={Login} />
-              <Route component={PageNotFound} />
-            </Switch>
+        <UserContext.Provider value={user}>
+          <div className="App">
+            <Sidebar
+              user={user}
+              changeLanguage={this.changeLanguage}
+              LogOutComponent={<GoogleLogout
+                clientId={keys.GOOGLE_LOGIN_CLIENT_ID}
+                buttonText="Sign out"
+                onLogoutSuccess={this.onLogoutSuccess}
+                icon={false}
+              // render={() => (
+              //   <FaSignOutAlt onClick={} className="sidebar__link-icon" />
+              // )}
+              >
+              </GoogleLogout>}
+            />
+            <div className="main-content" style={{ paddingLeft: 260 }}>
+              <Header />
+              <Switch>
+                <Route path="/" exact component={Home} />
+                <Route path="/products" exact component={(routeProps) => <Products {...routeProps} lang={user.lang} />} />
+                <Route path="/products/new" exact component={() => <AddProduct lang={user.lang} />} />
+                <Route path="/login" exact component={Login} />
+                <Route component={PageNotFound} />
+              </Switch>
+            </div>
           </div>
-        </div>
+
+        </UserContext.Provider>
+
       );
     };
 

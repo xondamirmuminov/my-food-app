@@ -4,7 +4,8 @@ import StyledHeader from './style';
 import { FaSignOutAlt, IoHome, IoSettings } from 'react-icons/all';
 
 export default function Header(props) {
-  const { user, LogOutComponent } = props;
+  const { user, LogOutComponent, changeLanguage } = props;
+  console.log(user)
 
   return (
     <StyledHeader className="sidebar">
@@ -15,9 +16,9 @@ export default function Header(props) {
           <IoHome className="sidebar__link-icon" />
           Home
         </NavLink>
-        <NavLink to="/drinks" exact className="sidebar__link-item">
+        <NavLink to="/products" exact className="sidebar__link-item">
           <IoHome className="sidebar__link-icon" />
-          Drinks
+          Products
         </NavLink>
         <NavLink to="/food" exact className="sidebar__link-item">
           <IoHome className="sidebar__link-icon" />
@@ -32,7 +33,12 @@ export default function Header(props) {
           Snaks
         </NavLink>
       </div>
-
+      <div>
+        <select name="lang" id="" onChange={e => changeLanguage(e.target.value)}>
+          <option value="uz">UZ</option>
+          <option value="ru">RU</option>
+        </select>
+      </div>
       <div className="sidebar__links settings">
         <NavLink to="/sign-up" exact className="sidebar__link-item">
           <IoSettings className="sidebar__link-icon" />
