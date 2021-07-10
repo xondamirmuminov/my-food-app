@@ -1,12 +1,14 @@
 import React, { useState, useCallback, useRef } from 'react';
 import { nanoid } from 'nanoid';
 import Axios from '../../utils/axios';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const Add = () => {
   const history = useHistory();
   const imageRef = useRef(null);
   const fileRef = useRef(null);
+  const params = useParams();
   const [values, setValues] = useState({
     name: '',
     description: '',
@@ -14,8 +16,23 @@ const Add = () => {
     salePrice: 0,
     category: '',
     image: '',
-    rate: 0
+    rate: 0,
+    oldImageName: ''
   });
+
+  const fetchProducts = async () => {
+    try {
+      const { data } = await Axios.get(`/products/${params.id}`);
+      setValues({ ...data, oldImageName: data.image });
+    }
+    catch (err) {
+      console.log(err);
+    }
+  }
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   const categories = [
     {
@@ -50,9 +67,13 @@ const Add = () => {
     formData.append('price', +values.price);
     formData.append('salePrice', +values.salePrice);
     formData.append('rate', values.rate);
-    formData.append('image', fileRef.current.files[0]);
+    if (fileRef.current?.files?.length) {
+      formData.append('edit', true);
+      formData.append('oldImageName', values.oldImageName);
+      formData.append('image', fileRef.current.files[0]);
+    }
 
-    Axios.post('/products', formData)
+    Axios.put(`/products/${params.id}`, formData)
       .then(data => {
         history.push('/products');
       })
@@ -133,7 +154,7 @@ const Add = () => {
             className="form__input form__textarea"
           />
         </div>
-        <button>Create product</button>
+        <button>Update product</button>
       </form>
     </div>
   );

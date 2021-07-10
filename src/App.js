@@ -11,6 +11,7 @@ import { refreshTokenSetup } from './utils';
 import Header from './containers/Header';
 import Products from './containers/Products';
 import AddProduct from './containers/Products/Add';
+import EditProduct from './containers/Products/Edit';
 import UserContext from './context/UserContext';
 
 
@@ -91,6 +92,7 @@ class App extends Component {
                 <Route path="/" exact component={Home} />
                 <Route path="/products" exact component={(routeProps) => <Products {...routeProps} lang={user.lang} />} />
                 <Route path="/products/new" exact component={() => <AddProduct lang={user.lang} />} />
+                <Route path="/products/edit/:id" exact component={() => <EditProduct lang={user.lang} />} />
                 <Route path="/login" exact component={Login} />
                 <Route component={PageNotFound} />
               </Switch>
