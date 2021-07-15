@@ -1,8 +1,8 @@
 import Axios from 'axios';
 
 const axios = Axios.create({
-  baseURL: '/',
-  timeout: 10000,
+  baseURL: '/api/',
+  timeout: 20000,
   timeoutErrorMessage: 'Connection is lost. Server not responded'
 });
 

@@ -7,6 +7,7 @@ export default class Login extends Component {
   render() {
     return (
       <StyledLogin className="login">
+        <h2>SIGN UP</h2>
         <div className="login__left">
           <img src="" alt="" className="logo" />
           <div className="slider">

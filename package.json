@@ -31,7 +31,7 @@
             "react-app/jest"
         ]
     },
-    "proxy": "http://apifood.alitechbot.uz",
+    "proxy": "https://apifood.alitechbot.uz",
     "browserslist": {
         "production": [
             ">0.2%",
