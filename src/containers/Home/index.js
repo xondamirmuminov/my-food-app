@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
+import { NavLink } from 'react-router-dom';
 import Carousel from './Carousel';
-import { FaCubes, BsFillHeartFill, GiRibbonMedal, AiFillStar, AiFillDatabase } from 'react-icons/all';
+import { FaCubes, BsFillHeartFill, GiRibbonMedal, AiFillStar, AiFillDatabase, IoSearch } from 'react-icons/all';
 import { Main } from '../../style/StyleHome';
 import All from './All';
 import SwitchSelector from "react-switch-selector";
@@ -10,9 +10,9 @@ import { BsSearch } from 'react-icons/all';
 
 export default function Home() {
     const [tabName, setTabName] = useState('all');
-    const [lactose, setLactose] = useState('');
     const [vegan, setVegan] = useState('');
     const [gluten, setGluten] = useState('');
+    const [lactose, setLactose] = useState('');
 
 
     const handleCLick = type => {
@@ -24,12 +24,12 @@ export default function Home() {
 
     const options = [
         {
-            label: 'No',
+            label: '',
             value: "no",
             selectedBackgroundColor: "#bc0000",
         },
         {
-            label: "Yes",
+            label: '',
             value: "yes",
             selectedBackgroundColor: "#ff2c68"
         }
@@ -57,10 +57,10 @@ export default function Home() {
         <Main>
             <div className="top">
                 <form action="">
-                    <button type="submit"><BsSearch /></button>
+                    <button type="submit"><IoSearch /></button>
                     <input type="text" placeholder="Search anything, find everything" />
                 </form>
-                <div className="top__switch" style={{ width: 100, height: 25 }}>
+                <div className="top__switch" style={{ width: 120, height: 25 }}>
                     <SwitchSelector
                         onChange={onLactose}
                         options={options}
@@ -73,7 +73,7 @@ export default function Home() {
                         Lactose
                     </span>
                 </div>
-                <div className="top__switch" style={{ width: 100, height: 25 }}>
+                <div className="top__switch" style={{ width: 110, height: 25 }}>
                     <SwitchSelector
                         onChange={onVegan}
                         options={options}
@@ -86,7 +86,7 @@ export default function Home() {
                         Vegan
                     </span>
                 </div>
-                <div className="top__switch" style={{ width: 100, height: 25 }}>
+                <div className="top__switch" style={{ width: 150, height: 25 }}>
                     <SwitchSelector
                         onChange={onGluten}
                         options={options}
@@ -96,7 +96,10 @@ export default function Home() {
                         fontSize={"20px"}
                     />
                     <span className="label">
-                        Gluten Free
+                        Gluten
+                    </span>
+                    <span className="label">
+                        Free
                     </span>
                 </div>
             </div>

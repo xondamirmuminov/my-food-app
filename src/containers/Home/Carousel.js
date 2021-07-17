@@ -2,7 +2,6 @@ import React from "react";
 import Slider from "react-slick";
 
 export default function SimpleSlider() {
-
     var settings = {
         fade: true,
         autoplaySpeed: 3000,
@@ -13,7 +12,6 @@ export default function SimpleSlider() {
         slidesToScroll: 1,
         arrows: false,
     };
-
     return (
         <div>
             <Slider {...settings}>
