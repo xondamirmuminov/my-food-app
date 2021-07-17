@@ -3,11 +3,10 @@ import { Redirect, Route, Switch, Link } from 'react-router-dom';
 import ProtectedRoutes from './containers/Auth/ProtectedRoutes';
 import { publicURLs, protectedURLs } from './routes';
 
-export default function App(props) {
-  const token = "dsd";
+export default function App() {
+  const token = localStorage.getItem('token');
   return (
     <div>
-      <Link to="/sign-up">Sign Up</Link>
       {
         token && <Redirect exact from={['/login', '/sign-up']} to="/" />
       }

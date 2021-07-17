@@ -5,7 +5,7 @@ import SignUp from './containers/Auth/SignUp'
 import Home from './containers/Home';
 
 export default function App(props) {
-  const token = "";
+  const token = localStorage.getItem('token');
 
   if (token) {
     return (
