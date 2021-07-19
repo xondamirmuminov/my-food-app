@@ -28,11 +28,9 @@ yarn run test
 
 ## Author
 
-👤 **AliCode academy**
+👤 **Xondamir Mo'minov**
 
-* Website: http://alisher.me
-* Github: [@alisher778](https://github.com/alisher778)
-* LinkedIn: [@alisher-musurmonov](https://linkedin.com/in/alisher-musurmonov)
+* Github: [@xondamirmuminov](https://github.com/xondamirmuminov)
 
 ## Show your support
 
