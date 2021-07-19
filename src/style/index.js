@@ -26,7 +26,6 @@ export default createGlobalStyle`
     padding-left: 260px;
     padding-right: 20px;
     max-width: 100%;
-    position: relative;
   }
   .container {
     width: 100%;
@@ -36,5 +35,45 @@ export default createGlobalStyle`
   }
   .slick-track {
     max-width: 100%;
+    height: 300px;
   }
+  .slick-dots{
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    list-style: none;
+  }
+  .slick-dots li button::before {
+    font-size: 6px;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    content: '•';
+    text-align: center;
+    top: -60px;
+    background: gray;
+    border-radius: 50%;
+  }
+  .slick-active button::before {
+    background: white !important;
+  }
+  .slick-dots li button {
+  font-size: 0;
+  line-height: 0;
+  display: block;
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+  cursor: pointer;
+  color: transparent;
+  border: 0;
+  position: relative;
+  margin-right: 15px;
+  outline: 0;
+  background: 0 0;
+}
 `;

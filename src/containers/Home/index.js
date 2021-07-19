@@ -105,6 +105,7 @@ export default function Home() {
             </div>
 
             <Carousel />
+
             <div className="tab">
                 <ul className="tab__list">
                     <li className={`tab__list-item ${tabName === 'all' ? 'active' : ''}`}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import StyledHeader from '../../style/StyleSidebar';
 import { ReactComponent as ProfileImage } from '../../assets/profile.svg';
 import { FaSignOutAlt, ImHome, IoSettings, BiDrink, FaHamburger, GiChipsBag } from 'react-icons/all'

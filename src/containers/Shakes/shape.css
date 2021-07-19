@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+ body {
+     font-family: 'Roboto';
+ }
+
+ .d-flex{
+     display: flex;
+ }
+
+.a-center {
+    display: flex;
+    align-items: center;
+}
+
+.j-beetwen {
+    display: flex;
+    justify-content: space-between;
+}
+
+.home__card-not-check {
+    display: none;
+}
+
+.home__card-check {
+    display: block;
+}

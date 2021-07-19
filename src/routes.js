@@ -3,6 +3,7 @@ import SignUp from './containers/Auth/SignUp';
 import Login from './containers/Auth/Login';
 import Home from './containers/Home/index';
 import Products from './containers/Products';
+import Shakes from './containers/Shakes';
 
 const protectedURLs = [
   {
@@ -17,11 +18,11 @@ const protectedURLs = [
     protected: true
   },
   {
-    path: '/',
+    path: '/shakes',
     exact: true,
-    component: Home,
+    component: Shakes,
     protected: true
-  },
+  }
 ];
 
 const publicURLs = [

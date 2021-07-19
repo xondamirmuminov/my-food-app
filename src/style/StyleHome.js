@@ -1,5 +1,6 @@
 import Styled from 'styled-components';
-import Salad from '../assets/home/salad.jpg';
+import Salad2 from '../assets/salad2.jpg';
+import colors from '../style/colors';
 
 
 export const Main = Styled.div`
@@ -25,7 +26,7 @@ h4 {
 .top {
     display:flex;
     justify-content:space-between;
-    padding-top:20px;
+    padding-top: 40px;
     align-items: center;
     margin-bottom:15px;
 }
@@ -64,8 +65,14 @@ form{
     background-repeat: no-repeat;
     background-size: cover;
     border-radius:8px;
-    background-image: url(${Salad}) ;
+    background-image: url(${Salad2}) ;
     background-position-y:center;   
+} 
+.first {
+    h3 {
+        color: ${colors.dark};
+        font-weight: 900;
+    }
 }
 .tab {
     margin-top:40px;
