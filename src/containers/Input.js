@@ -2,11 +2,8 @@ import React, { useState } from 'react';
 import { FaMinus, FaPlus } from 'react-icons/all';
 import { InputInner } from '../style/StyleAll';
 
-export default function Input({ handle, cost }) {
+export default function Input({ handle, cost, add, remove }) {
     const [product, setProduct] = useState(1);
-    if (!localStorage.totalProduct) {
-        localStorage.setItem('totalProduct', '[]')
-    }
     const parseCost = JSON.parse(localStorage.getItem('totalProduct'));
 
     const handleValue = (e) => {
@@ -17,9 +14,11 @@ export default function Input({ handle, cost }) {
         setProduct(product + 1)
         parseCost.push(cost);
         localStorage.totalProduct = JSON.stringify(parseCost)
+        add(cost);
     }
     const minusValue = () => {
         setProduct(product - 1)
+        remove(cost);
     }
 
     return (

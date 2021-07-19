@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Switch } from 'react-router-dom';
 import Shake2 from '../../assets/shake2.png';
 import Salad from '../../assets/salad.svg';
@@ -9,12 +9,26 @@ import { FaMinus, FaPlus } from 'react-icons/all';
 import Input from '../Input';
 
 function Bag({ }) {
+    if (!localStorage.totalProduct) {
+        localStorage.setItem('totalProduct', JSON.stringify([0]))
+    }
+    const parse = JSON.parse(localStorage.getItem('total'));
     const [activeLinkName, setActiveLinkName] = useState('order');
     const [activeTextName, setActiveTextName] = useState('l');
-    const [costShake, setCostShake] = useState(0);
+    const [total, setTotal] = useState(parse ?? 0);
     let parseProduct = JSON.parse(localStorage.getItem(`${window.location.pathname === '/shakes' ? 'fruits' : window.location.pathname === '/shakes/vegetables' ? 'vegetables' : window.location.pathname === '/salads' ? 'salads' : window.location.pathname === '/snacks' ? 'snacks' : window.location.pathname === '/foods' ? 'foods' : window.location.pathname === '/drinks' ? 'drinks' : ''}`));
-    let parseTotal = JSON.parse(localStorage.getItem('totalProduct'));
-    let reducer = (cost, total) => cost + total;
+    const handleAddCost = (cost) => {
+        setTotal(total + cost)
+    }
+    const handleRemovedCost = (cost) => {
+        setTotal(total - cost)
+    }
+    useEffect(() => {
+        localStorage.setItem('total', total);
+    }, [total])
+    useEffect(() => {
+        setTotal(parse)
+    }, [])
     return (
         <Bag2>
             <div className="bag__header">
@@ -71,7 +85,7 @@ function Bag({ }) {
                             <div className="bag__inner-product-item">
                                 <p>{item?.title}</p>
                                 <div>
-                                    <Input parse={parseProduct} cost={item?.cost} />
+                                    <Input add={handleAddCost} remove={handleRemovedCost} parse={parseProduct} cost={item?.cost} />
                                 </div>
                             </div>
                         ))}
@@ -79,7 +93,7 @@ function Bag({ }) {
                 </div>
                 <div className="bag__inner-total">
                     <h3>Total amount:</h3>
-                    <h3 className="bag__total">{parseTotal?.reduce(reducer)}$</h3>
+                    <h3 className="bag__total">{total}$</h3>
                 </div>
             </div>
         </Bag2>

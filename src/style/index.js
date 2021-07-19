@@ -12,6 +12,37 @@ export default createGlobalStyle`
   *::before {
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+  }
+
+   /* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: blue orange;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #2e3549;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #ff4a7a;
+  border-radius: 35px;
+}
+  
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type=number] {
+    -moz-appearance: textfield;
   }
   
   body {

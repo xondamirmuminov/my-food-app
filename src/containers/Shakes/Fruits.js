@@ -124,6 +124,7 @@ export default function Fruits({ bagHandler, isSelected, setIsSelected }) {
             localStorage.fruits = JSON.stringify(parse);
             parseCost.push(data.cost);
             localStorage.totalProduct = JSON.stringify(parseCost);
+            localStorage.setItem('total', data.cost)
         }
     }
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import colors from './colors';
-const { dark, red, gray, blue } = colors;
+const { dark, red, gray } = colors;
 
 let Main = styled.main`
     
@@ -45,10 +45,10 @@ let Container = styled.div`
     .header__list {
         display: flex;
         align-items: center;
-        padding-left: 70px;
+        padding: 0;
     }
     .header__list-item {
-        margin-right: 100px; 
+        margin-left: 100px; 
         list-style: none;
     }
     .header__list-link {
@@ -90,7 +90,7 @@ let Container = styled.div`
     }
     .home__card {
         width: 100%;
-        max-width: 240px;
+        max-width: 235px;
         border: 1px solid gainsboro;
         border-radius: 20px 20px 6px 6px;
         margin-top: 30px;
@@ -102,7 +102,7 @@ let Container = styled.div`
         box-shadow: 10px 10px 10px gainsboro;
     }
     .home__card-img {
-        border-bottom: 4px solid ${blue};
+        border-bottom: 4px solid #e9f6ff    ;
         border-radius: 20px 20px 0 0;
         width: 100%;
         height: 155px;
