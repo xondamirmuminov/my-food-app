@@ -7,6 +7,7 @@ import Fruits from './Fruits';
 import FruitsTable from './FruitsTable';
 import Header from './Header';
 import Bag from './Bag';
+import MyContext from './context';
 
 function Shakes() {
     const check = JSON.parse(localStorage.getItem('product'))
@@ -17,7 +18,7 @@ function Shakes() {
     }
     return (
         <>
-            <React.StrictMode>
+            <MyContext.Provider value="Xondamir">
                 <BrowserRouter>
                     <div className="shakes">
                         <Flex>
@@ -47,7 +48,7 @@ function Shakes() {
                         </Flex>
                     </div>
                 </BrowserRouter>
-            </React.StrictMode>
+            </MyContext.Provider>
         </>
     )
 }

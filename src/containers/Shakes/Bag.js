@@ -26,6 +26,7 @@ function Bag({ }) {
     useEffect(() => {
         localStorage.setItem('total', total);
     }, [total])
+
     useEffect(() => {
         setTotal(parse)
     }, [])
