@@ -7,6 +7,7 @@ import Snack from '../../assets/snack.svg';
 import { Container, Flex, Bag2 } from '../../style/StyleShake';
 import { FaMinus, FaPlus } from 'react-icons/all';
 import Input from '../Input';
+import MyContext from './context'
 
 function Bag({ }) {
     if (!localStorage.totalProduct) {
