@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import StyledHeader from '../../style/StyleSidebar';
 import { ReactComponent as ProfileImage } from '../../assets/profile.svg';
-import { FaSignOutAlt, ImHome, IoSettings, BiDrink, FaHamburger, GiChipsBag } from 'react-icons/all'
+import { FaSignOutAlt, ImHome, IoSettings, BiDrink, FaHamburger, GiChipsBag, MdAddBox } from 'react-icons/all'
 
 export default function Header() {
     return (
@@ -33,6 +33,10 @@ export default function Header() {
                 <NavLink to="/snaks" exact className="sidebar__link-item">
                     <GiChipsBag className="sidebar__link-icon" />
                     Snaks
+                </NavLink>
+                <NavLink to="/products" exact className="sidebar__link-item">
+                    <MdAddBox className="sidebar__link-icon" />
+                    Add Product
                 </NavLink>
             </div>
 

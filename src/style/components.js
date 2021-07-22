@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import colors from './colors';
 
 export const StyledLoader = styled.div`
   height: 100vh;
@@ -9,7 +10,7 @@ export const StyledLoader = styled.div`
   left: 0;
   bottom: 0;
   z-index: 1040;
-  background-color: rgb(233 30 99 / 33%);
+  background-color: #2e3549c2;
   display: flex;
   align-items: center;
   justify-content: center;

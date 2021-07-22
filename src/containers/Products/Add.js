@@ -2,6 +2,7 @@ import React, { useState, useCallback, useRef } from 'react';
 import { nanoid } from 'nanoid';
 import Axios from '../../utils/axios';
 import { useHistory } from 'react-router-dom';
+import { TiStarFullOutline } from 'react-icons/all';
 
 const Add = () => {
   const history = useHistory();
@@ -14,7 +15,13 @@ const Add = () => {
     salePrice: 0,
     category: '',
     image: '',
-    rate: 0
+    rate: {
+      one: '1',
+      two: '2',
+      three: '3',
+      four: '4',
+      five: '5',
+    }
   });
 
   const categories = [
@@ -28,6 +35,18 @@ const Add = () => {
     },
     {
       name: "Drinks",
+      _id: nanoid(15)
+    },
+    {
+      name: "Shakes",
+      _id: nanoid(15)
+    },
+    {
+      name: "Food",
+      _id: nanoid(15)
+    },
+    {
+      name: "Snacks",
       _id: nanoid(15)
     },
   ];
@@ -122,7 +141,13 @@ const Add = () => {
         </div>
         <div className="form__input__wrapperr">
           <label htmlFor="name">Rate</label>
-          <input onChange={handleInputChange} value={values.rate} type="number" name="rate" />
+          <select name="rate" onChange={handleInputChange}>
+            <option value={values.rate.one}>1</option>
+            <option value={values.rate.two}>2</option>
+            <option value={values.rate.three}>3</option>
+            <option value={values.rate.four}>4</option>
+            <option value={values.rate.five}>5</option>
+          </select>
         </div>
         <div className="form__input__wrapperr">
           <label htmlFor="name">Description</label>

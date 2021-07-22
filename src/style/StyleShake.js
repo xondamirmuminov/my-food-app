@@ -111,6 +111,7 @@ let Container = styled.div`
         font-size: 22px;
         margin-top: 6px;
         margin-bottom: 0;
+        text-transform: capitalize;
     }
     .home__card-text{
         color: #b9bbc0;
@@ -298,6 +299,7 @@ const Bag2 = styled.div`
                 color: #616571;
                 font-weight: 600;
                 font-size: 18px;
+                text-transform: capitalize;
             }
         }
     }

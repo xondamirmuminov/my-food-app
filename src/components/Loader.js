@@ -1,6 +1,7 @@
 import React from 'react';
-import MoonLoader from "react-spinners/MoonLoader";
+import MoonLoader from "react-spinners/HashLoader";
 import { StyledLoader } from '../style/components';
+import colors from '../style/colors';
 
 export default function Loader({ loading }) {
   if (!loading) {
@@ -13,7 +14,8 @@ export default function Loader({ loading }) {
         type="bubble-top"
         bgColor={"rgb(0,0,0, 50%)"}
         title={"Loading"}
-        size={100}
+        color={"#dc305e"}
+        size={150}
       />
     </StyledLoader>
   )

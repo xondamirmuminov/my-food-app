@@ -30,6 +30,7 @@ function Bag({ }) {
 
     useEffect(() => {
         setTotal(parse)
+        console.log(parseProduct)
     }, [])
     return (
         <Bag2>
@@ -83,11 +84,11 @@ function Bag({ }) {
                 <div className="bag__inner-product">
                     <div className="bag__inner-product-header">{parseProduct[0]?.category}</div>
                     <div className="bag__inner-product-body">
-                        {parseProduct.map(item => (
+                        {parseProduct?.map(item => (
                             <div className="bag__inner-product-item">
-                                <p>{item?.title}</p>
+                                <p>{item?.name}</p>
                                 <div>
-                                    <Input add={handleAddCost} remove={handleRemovedCost} parse={parseProduct} cost={item?.cost} />
+                                    <Input add={handleAddCost} remove={handleRemovedCost} parse={parseProduct} cost={item?.salePrice} />
                                 </div>
                             </div>
                         ))}
