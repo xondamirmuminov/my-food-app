@@ -70,7 +70,7 @@ const Add = () => {
     formData.append('salePrice', +values.salePrice);
     formData.append('rate', values.rate);
     formData.append('image', fileRef.current.files[0]);
-
+    console.log(Array.from(formData))
     Axios.post('/products', formData)
       .then(data => {
         history.push('/products');

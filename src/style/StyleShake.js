@@ -97,6 +97,7 @@ let Container = styled.div`
         margin-left: 18px;
         padding: 15px;
         cursor: pointer;
+        position: relative;
     }
     .home__card:hover{
         box-shadow: 10px 10px 10px gainsboro;
@@ -132,6 +133,32 @@ let Container = styled.div`
         color: white;
         background: ${red};
         border: 0;
+    }
+    .home__card-rate-inner {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        position: absolute;
+        top: 146px;
+        left: 0;
+        span{
+            font-size: 32px;
+            color: gainsboro;
+            margin-right: 4px;
+        }
+    }
+    .oneStar span:first-child, 
+    .twoStar span:nth-child(1), 
+    .twoStar span:nth-child(2),
+    .threeStar span:nth-child(1),
+    .threeStar span:nth-child(2),
+    .threeStar span:nth-child(3),
+    .fourStar span:nth-child(2n),
+    .fourStar span:nth-child(1),
+    .fourStar span:nth-child(3),
+    .fiveStar span:nth-child(2n),
+    .fiveStar span:nth-child(1n){
+        color: yellow !important;
     }
     .home__table {
         width: 100%;

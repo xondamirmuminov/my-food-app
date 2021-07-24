@@ -82,7 +82,7 @@ function Bag({ }) {
                     </p>
                 </div>
                 <div className="bag__inner-product">
-                    <div className="bag__inner-product-header">{parseProduct[0]?.category}</div>
+                    <div className="bag__inner-product-header">Fruits</div>
                     <div className="bag__inner-product-body">
                         {parseProduct?.map(item => (
                             <div className="bag__inner-product-item">
