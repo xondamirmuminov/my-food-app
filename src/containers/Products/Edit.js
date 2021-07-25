@@ -73,9 +73,13 @@ const Add = () => {
       formData.append('image', fileRef.current.files[0]);
     }
 
+    localStorage.setItem('id', JSON.stringify(params.id))
+
     Axios.put(`/products/${params.id}`, formData)
       .then(data => {
-        history.push('/products');
+        if (localStorage.id) {
+          history.push('/products');
+        }
       })
       .catch(err => {
         console.log(err)

@@ -25,8 +25,6 @@ export default function Card({ title, img, text, cost, rate, clickHandler }) {
         handleRate(obj[rate])
     }, [star])
 
-    console.log(star)
-
     return (
         <div onClick={addBagHandler} className="home__card">
             <div className={isSelected ? 'home__card-check' : 'home__card-not-check'}>

@@ -4,7 +4,10 @@ import Login from './containers/Auth/Login';
 import Home from './containers/Home/index';
 import Products from './containers/Products';
 import Add from './containers/Products/Add';
+import Edit from './containers/Products/Edit';
 import Shakes from './containers/Shakes';
+
+let id = localStorage.getItem('id')
 
 const protectedURLs = [
   {
@@ -23,6 +26,12 @@ const protectedURLs = [
     path: '/products/new',
     exact: true,
     component: Add,
+    protected: true
+  },
+  {
+    path: `/products/edit/${id}`,
+    exact: true,
+    component: Edit,
     protected: true
   },
   {

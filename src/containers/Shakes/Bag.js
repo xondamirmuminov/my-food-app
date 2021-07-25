@@ -88,7 +88,7 @@ function Bag({ }) {
                             <div className="bag__inner-product-item">
                                 <p>{item?.name}</p>
                                 <div>
-                                    <Input add={handleAddCost} remove={handleRemovedCost} parse={parseProduct} cost={item?.salePrice} />
+                                    <Input add={handleAddCost} name={item?.name} remove={handleRemovedCost} parse={parseProduct} cost={item?.salePrice} />
                                 </div>
                             </div>
                         ))}

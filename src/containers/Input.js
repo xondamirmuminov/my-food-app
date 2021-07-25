@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaMinus, FaPlus } from 'react-icons/all';
 import { InputInner } from '../style/StyleAll';
 
-export default function Input({ handle, cost, add, remove }) {
-    const [product, setProduct] = useState(1);
+export default function Input({ handle, cost, add, remove, name }) {
+    let amount = JSON.parse(localStorage.getItem(name))
+    const [product, setProduct] = useState(amount ?? 1);
     const parseCost = JSON.parse(localStorage.getItem('totalProduct'));
 
     const handleValue = (e) => {
@@ -20,6 +21,14 @@ export default function Input({ handle, cost, add, remove }) {
         setProduct(product - 1)
         remove(cost);
     }
+
+    useEffect(() => {
+        localStorage.setItem(name, JSON.stringify(product));
+    }, [product])
+
+    useEffect(() => {
+        setProduct(amount)
+    }, [])
 
     return (
         <InputInner>
