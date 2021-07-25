@@ -2,10 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { FaMinus, FaPlus } from 'react-icons/all';
 import { InputInner } from '../style/StyleAll';
 
-export default function Input({ handle, cost, add, remove, name }) {
-    let amount = JSON.parse(localStorage.getItem(name))
+export default function Input({ handle, cost, add, remove, name, id }) {
+    let amount = JSON.parse(localStorage.getItem(id))
     const [product, setProduct] = useState(amount ?? 1);
     const parseCost = JSON.parse(localStorage.getItem('totalProduct'));
+
+    if (amount == '0') {
+        let parseFruits = JSON.parse(localStorage.getItem('fruits'));
+        let findId = parseFruits.find(item => item._id == id.toString());
+        let filterParse = parseFruits.filter(item => item === findId);
+        localStorage.setItem('fruits', JSON.stringify(filterParse));
+        window.location.pathname = '/shakes';
+    }
 
     const handleValue = (e) => {
         setProduct(e.target.value);
@@ -23,7 +31,7 @@ export default function Input({ handle, cost, add, remove, name }) {
     }
 
     useEffect(() => {
-        localStorage.setItem(name, JSON.stringify(product));
+        localStorage.setItem(id, JSON.stringify(product));
     }, [product])
 
     useEffect(() => {

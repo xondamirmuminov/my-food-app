@@ -79,6 +79,7 @@ const Add = () => {
       .then(data => {
         if (localStorage.id) {
           history.push('/products');
+          console.log('salom tentak')
         }
       })
       .catch(err => {
