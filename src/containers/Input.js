@@ -7,13 +7,7 @@ export default function Input({ handle, cost, add, remove, name, id }) {
     const [product, setProduct] = useState(amount ?? 1);
     const parseCost = JSON.parse(localStorage.getItem('totalProduct'));
 
-    if (amount == '0') {
-        let parseFruits = JSON.parse(localStorage.getItem('fruits'));
-        let findId = parseFruits.find(item => item._id == id.toString());
-        let filterParse = parseFruits.filter(item => item === findId);
-        localStorage.setItem('fruits', JSON.stringify(filterParse));
-        window.location.pathname = '/shakes';
-    }
+
 
     const handleValue = (e) => {
         setProduct(e.target.value);
@@ -29,13 +23,23 @@ export default function Input({ handle, cost, add, remove, name, id }) {
         setProduct(product - 1)
         remove(cost);
     }
+    useEffect(() => {
+        setProduct(amount)
+    }, [])
 
     useEffect(() => {
         localStorage.setItem(id, JSON.stringify(product));
     }, [product])
 
+
     useEffect(() => {
-        setProduct(amount)
+        if (amount == 0) {
+            console.log(amount)
+            let parseFruits = JSON.parse(localStorage.getItem('fruits'));
+            let findId = parseFruits.find(item => item._id == id.toString());
+            let filterParse = parseFruits.filter(item => item !== findId);
+            localStorage.setItem('fruits', JSON.stringify(filterParse));
+        }
     }, [])
 
     return (

@@ -10,7 +10,6 @@ export default function Fruits({ bagHandler }) {
     const [loading, setLoading] = useState(false);
     const [product, setProduct] = useState([]);
     const [totalShake, setTotalShake] = useState(JSON.parse(localStorage.getItem('total')))
-    // const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) ?? []);
 
     if (!localStorage.fruits) {
         localStorage.setItem('fruits', '[]');
@@ -18,11 +17,7 @@ export default function Fruits({ bagHandler }) {
 
     const clickHandler = data => {
         bagHandler();
-        // Savatchg mahsulotni qo'shish
-        // let cartItem = { ...product, amount: 1 }
-        // setCart([...cart, cartItem]);
 
-        let parseCost = JSON.parse(localStorage.getItem('totalProduct'));
         let parse = JSON.parse(localStorage.getItem('fruits'));
         if (parse.find(item => item._id === data._id)) {
             let findParse = parse.find(item => item._id === data._id);
@@ -30,8 +25,6 @@ export default function Fruits({ bagHandler }) {
         } else {
             parse.push(data);
             localStorage.fruits = JSON.stringify(parse);
-            parseCost.push(data.salePrice);
-            localStorage.totalProduct = JSON.stringify(parseCost);
             let parseTotal = JSON.parse(localStorage.total) + data.salePrice;
             localStorage.setItem('total', parseTotal)
             setTotalShake(parseTotal)
