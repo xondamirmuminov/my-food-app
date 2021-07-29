@@ -7,8 +7,6 @@ export default function Input({ handle, cost, add, remove, name, id }) {
     const [product, setProduct] = useState(amount ?? 1);
     const parseCost = JSON.parse(localStorage.getItem('totalProduct'));
 
-
-
     const handleValue = (e) => {
         setProduct(e.target.value);
     }
@@ -22,6 +20,12 @@ export default function Input({ handle, cost, add, remove, name, id }) {
     const minusValue = () => {
         setProduct(product - 1)
         remove(cost);
+        if (product == 0) {
+            let parseFruits = JSON.parse(localStorage.getItem('fruits'));
+            let findId = parseFruits.find(item => item._id == id.toString());
+            let filterParse = parseFruits.filter(item => item !== findId);
+            localStorage.setItem('fruits', JSON.stringify(filterParse));
+        }
     }
     useEffect(() => {
         setProduct(amount)
@@ -33,14 +37,7 @@ export default function Input({ handle, cost, add, remove, name, id }) {
 
 
     useEffect(() => {
-        if (amount == 0) {
-            console.log(amount)
-            let parseFruits = JSON.parse(localStorage.getItem('fruits'));
-            let findId = parseFruits.find(item => item._id == id.toString());
-            let filterParse = parseFruits.filter(item => item !== findId);
-            localStorage.setItem('fruits', JSON.stringify(filterParse));
-        }
-    }, [])
+    }, [product])
 
     return (
         <InputInner>
