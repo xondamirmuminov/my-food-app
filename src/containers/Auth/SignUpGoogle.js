@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
-import keys from '../../configs/keys';
+// import keys from '../../configs/keys';
 import { refreshTokenSetup } from '../../utils';
 export default class SignUpGoogle extends Component {
 
@@ -28,7 +28,7 @@ export default class SignUpGoogle extends Component {
       <div>
         <h2>Sign Up page</h2>
         <GoogleLogin
-          clientId={keys.GOOGLE_LOGIN_CLIENT_ID}
+          // clientId={keys.GOOGLE_LOGIN_CLIENT_ID}
           buttonText="Login"
           onSuccess={this.onSuccess}
           onFailure={this.onFailure}
@@ -37,7 +37,7 @@ export default class SignUpGoogle extends Component {
         />
         <div></div>
         <GoogleLogout
-          clientId={keys.GOOGLE_LOGIN_CLIENT_ID}
+          // clientId={keys.GOOGLE_LOGIN_CLIENT_ID}
           buttonText="Logout"
           onLogoutSuccess={this.onLogoutSuccess}
         >
