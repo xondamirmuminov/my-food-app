@@ -28,6 +28,32 @@ const Sign = styled.section`
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        div{
+            display: flex;
+            align-items: center;
+            /* width: 50%; */
+            p{
+                color: ${gray};
+                letter-spacing: .6px;
+                margin: 0;
+                margin-top: 5px;
+            }
+            a{
+                color: ${red};
+                margin-left: 10px;
+            }
+
+        }
+        h3{
+            color: red;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            letter-spacing: .8px;
+            svg{
+                margin-right: 5px;
+            }
+        }
         h1{
             color: ${gray};
             font-size: 36px;

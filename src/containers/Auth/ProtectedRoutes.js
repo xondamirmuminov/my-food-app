@@ -8,7 +8,7 @@ export default function ProtectedRoutes(props) {
     <Route
       {...restProps}
       render={(props) => {
-        return token ? <Component {...props} /> : <Redirect to="/sign-up" />
+        return !token ? <Component {...props} /> : <Redirect to="/sign-up" />
       }}
     />
   )

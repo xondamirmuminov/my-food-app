@@ -21,20 +21,20 @@ export default function App() {
         </Switch>
       </div>
     </div>)
-  }
-
-  return (
-    <div className="app">
-      <div>
-        {
-          token && <Redirect exact to="/login" />
-        }
-        <Switch>
+  } else {
+    return (
+      <div className="app">
+        <div>
           {
-            publicURLs.map((item, index) => <Route key={index} {...item} />)
+            <Redirect exact to="/login" />
           }
-        </Switch>
+          <Switch>
+            {
+              publicURLs.map((item, index) => <Route key={index} {...item} />)
+            }
+          </Switch>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }

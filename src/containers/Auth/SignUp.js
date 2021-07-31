@@ -6,9 +6,11 @@ import imageIceCream from '../../assets/auth/ice-cream.svg';
 import imageAnimated from '../../assets/auth/chef-animated.svg';
 import { useDispatch } from 'react-redux';
 import { signInAction, signUpAction } from '../../redux/actions/auth';
+import { BiErrorCircle } from 'react-icons/all';
 
 export default function SignUp() {
   const dispatch = useDispatch();
+  const [message, setMessage] = useState('');
   const [values, setValues] = useState({
     firstName: '',
     lastName: '',
@@ -28,20 +30,20 @@ export default function SignUp() {
     e.preventDefault();
     const valueusInput = values;
     Axios.post('/auth/sign-up', valueusInput)
-      .then(data => {
-        const { success, token } = data.data;
+      .then(({ data }) => {
+        const { success, token, error, msg } = data;
+
         if (success) {
-          // alert('Your are logged in successfully')
-          // localStorage.setItem('token', token)
-          dispatch(signUpAction(data.data));
+          dispatch(signUpAction(data));
           history.push("/")
-        }
-        else {
-          alert('Error')
+        } else if (!success) {
+          console.log(error)
+          setMessage(error || msg);
         }
       })
       .catch(err => {
-        console.log(err)
+        setMessage(err?.response?.data?.msg)
+        console.log(err.message)
       })
   }
 
@@ -50,11 +52,13 @@ export default function SignUp() {
       <img src={imageIceCream} alt="ice-cream vendor" className="signup__img" />
       <form onSubmit={handleSubmit}>
         <h1>Sign Up</h1>
+        <h3>{message !== '' ? <BiErrorCircle /> : null}{message !== '' ? message : null}</h3>
         <input
           value={values.firstName}
           onChange={handleInputChange}
           type="text"
           name="firstName"
+          required
           placeholder="First Name"
         />
         <input
@@ -62,6 +66,7 @@ export default function SignUp() {
           onChange={handleInputChange}
           type="text"
           name="lastName"
+          required
           placeholder="Last Name"
         />
         <input
@@ -69,6 +74,7 @@ export default function SignUp() {
           onChange={handleInputChange}
           type="number"
           name="phone"
+          required
           placeholder="Phone number"
         />
         <input
@@ -76,6 +82,7 @@ export default function SignUp() {
           onChange={handleInputChange}
           type="email"
           name="email"
+          required
           placeholder="Email"
         />
         <input
@@ -83,6 +90,7 @@ export default function SignUp() {
           onChange={handleInputChange}
           type="password"
           name="password"
+          required
           placeholder="Password"
         />
         <button className="form__btn" type="submit">Sign Up</button>
