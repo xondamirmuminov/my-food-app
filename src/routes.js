@@ -1,4 +1,3 @@
-import SignUpGoogle from './containers/Auth/SignUpGoogle';
 import SignUp from './containers/Auth/SignUp';
 import Login from './containers/Auth/Login';
 import Home from './containers/Home/index';
@@ -53,11 +52,7 @@ const publicURLs = [
     exact: true,
     component: Login,
   },
-  {
-    path: '/sign-up-google',
-    exact: true,
-    component: SignUpGoogle,
-  }
+
 ];
 
 export { publicURLs, protectedURLs };

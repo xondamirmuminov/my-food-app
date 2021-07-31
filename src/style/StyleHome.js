@@ -61,7 +61,7 @@ form{
 }
 
 .slider {
-    height:300px;  
+    height: 300px;  
     background-repeat: no-repeat;
     background-size: cover;
     border-radius:8px;
