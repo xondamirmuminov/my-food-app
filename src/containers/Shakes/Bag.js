@@ -7,16 +7,15 @@ import Snack from '../../assets/snack.svg';
 import { Container, Flex, Bag2 } from '../../style/StyleShake';
 import { FaMinus, FaPlus } from 'react-icons/all';
 import Input from '../Input';
-import MyContext from './context'
+import MyContext from './context';
+import { useSelector } from 'react-redux';
 
 function Bag({ }) {
-    if (!localStorage.totalProduct) {
-        localStorage.setItem('totalProduct', JSON.stringify([0]))
-    }
+    const product = useSelector((state) => state.product);
     const parse = JSON.parse(localStorage.getItem('total'));
     const [activeLinkName, setActiveLinkName] = useState('order');
     const [activeTextName, setActiveTextName] = useState('l');
-    const [total, setTotal] = useState(parse ?? 0);
+    const [total, setTotal] = useState(parse ?? 1);
     let parseProduct = JSON.parse(localStorage.getItem(`${window.location.pathname === '/shakes' ? 'fruits' : window.location.pathname === '/shakes/vegetables' ? 'vegetables' : window.location.pathname === '/salads' ? 'salads' : window.location.pathname === '/snacks' ? 'snacks' : window.location.pathname === '/foods' ? 'foods' : window.location.pathname === '/drinks' ? 'drinks' : ''}`));
     const handleAddCost = (cost) => {
         setTotal(total + cost)
@@ -84,7 +83,7 @@ function Bag({ }) {
                 <div className="bag__inner-product">
                     <div className="bag__inner-product-header">Fruits</div>
                     <div className="bag__inner-product-body">
-                        {parseProduct?.map(item => (
+                        {product?.map(item => (
                             <div className="bag__inner-product-item">
                                 <p>{item?.name}</p>
                                 <div>

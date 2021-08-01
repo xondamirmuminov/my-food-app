@@ -13,6 +13,7 @@ const initialState = {
       _id: null,
       image: null,
       rate: null,
+      amount: 0,
     }
   ]
 };

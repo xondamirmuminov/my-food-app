@@ -5,29 +5,22 @@ import { Container } from '../../style/StyleShake';
 import axios from '../../utils/axios';
 import Loader from '../../components/Loader';
 import { useDispatch, useSelector } from 'react-redux';
+import { productAction } from '../../redux/actions/auth';
 
 export default function Fruits({ bagHandler }) {
     const dispatch = useDispatch();
-    const [totalValue, setTotalValue] = useState(1);
     const [loading, setLoading] = useState(false);
-    const [product, setProduct] = useState([]);
-
-    if (!localStorage.fruits) {
-        localStorage.setItem('fruits', '[]');
-    }
+    const [products, setProducts] = useState([]);
+    const product = useSelector((state) => state.product);
 
     const clickHandler = data => {
         bagHandler();
 
-        let parse = JSON.parse(localStorage.getItem('fruits'));
-        if (parse.find(item => item._id === data._id)) {
-            let findParse = parse.find(item => item._id === data._id);
-            setTotalValue(findParse.total + 1);
+        if (product.find(item => item?._id === data?._id)) {
+            let findProduct = product.find(item => item?._id === data?._id);
+            dispatch(productAction(findProduct?.amount + 1))
         } else {
-            parse.push(data);
-            localStorage.fruits = JSON.stringify(parse);
-            let parseTotal = JSON.parse(localStorage.total) + data.salePrice;
-            localStorage.setItem('total', parseTotal)
+            dispatch(productAction(data))
         }
     }
 
@@ -36,11 +29,11 @@ export default function Fruits({ bagHandler }) {
         try {
             const res = await axios.get('/products/');
             console.log(res)
-            setProduct(res.data)
             setLoading(false)
+            setProducts(res.data)
         }
         catch (error) {
-            console.log(error, 'salom tentak')
+            console.log(error)
             setLoading(false)
         }
     }
@@ -56,7 +49,7 @@ export default function Fruits({ bagHandler }) {
                 <Container>
                     <div className="home__inner">
                         {
-                            product.map(item => {
+                            products.map(item => {
                                 return (
                                     <Card
                                         title={item.name}
