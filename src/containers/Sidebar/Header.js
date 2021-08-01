@@ -55,10 +55,10 @@ export default function Header() {
           <IoSettings className="sidebar__link-icon" />
           Settings
         </NavLink>
-        <NavLink to="#" onClick={handleSignOut} exact className="sidebar__link-item">
+        <li onClick={handleSignOut} className="sidebar__link-item">
           <FaSignOutAlt className="sidebar__link-icon" />
           Sign Out
-        </NavLink>
+        </li>
       </div>
     </StyledHeader>
   )

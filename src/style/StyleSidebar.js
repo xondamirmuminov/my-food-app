@@ -29,6 +29,7 @@ let StyledHeader = styled.header`
     text-decoration: none;
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     &.active {
       color: ${red};
