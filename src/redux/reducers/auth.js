@@ -3,6 +3,18 @@ import * as actionTypes from '../actionTypes';
 const initialState = {
   user: {},
   token: null,
+  product: [
+    {
+      name: '',
+      price: null,
+      salePrice: null,
+      description: '',
+      category: [],
+      _id: null,
+      image: null,
+      rate: null,
+    }
+  ]
 };
 
 const authReducer = (state = initialState, action) => {
@@ -17,6 +29,16 @@ const authReducer = (state = initialState, action) => {
     };
   } else if (action.type === actionTypes.AUTH_SIGN_OUT) {
     return initialState;
+  } else if (action.type === actionTypes.PRODUCT) {
+    return {
+      ...state,
+      product: [
+        ...state.product,
+        {
+          ...action.payload.product
+        }
+      ]
+    }
   } else {
     return state;
   }

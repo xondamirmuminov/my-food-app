@@ -4,12 +4,13 @@ import PineApple from '../../assets/fruits/pine.jpg';
 import { Container } from '../../style/StyleShake';
 import axios from '../../utils/axios';
 import Loader from '../../components/Loader';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function Fruits({ bagHandler }) {
+    const dispatch = useDispatch();
     const [totalValue, setTotalValue] = useState(1);
     const [loading, setLoading] = useState(false);
     const [product, setProduct] = useState([]);
-    const [totalShake, setTotalShake] = useState(JSON.parse(localStorage.getItem('total')))
 
     if (!localStorage.fruits) {
         localStorage.setItem('fruits', '[]');
@@ -27,7 +28,6 @@ export default function Fruits({ bagHandler }) {
             localStorage.fruits = JSON.stringify(parse);
             let parseTotal = JSON.parse(localStorage.total) + data.salePrice;
             localStorage.setItem('total', parseTotal)
-            setTotalShake(parseTotal)
         }
     }
 

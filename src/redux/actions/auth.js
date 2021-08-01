@@ -19,3 +19,9 @@ export const signOutAction = () => {
     type: actionTypes.AUTH_SIGN_OUT
   }
 }
+export const productAction = (data) => {
+  return {
+    type: actionTypes.PRODUCT,
+    payload: data,
+  }
+}

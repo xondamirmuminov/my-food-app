@@ -6,7 +6,7 @@ import Header from './containers/Sidebar/Header';
 import { useSelector } from 'react-redux';
 
 export default function App() {
-  const { token, user } = useSelector(state => state.auth || {});
+  const { token, user, product } = useSelector(state => state.auth || {});
   console.log(token)
 
   if (token) {
