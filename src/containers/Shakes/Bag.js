@@ -11,7 +11,7 @@ import MyContext from './context';
 import { useSelector } from 'react-redux';
 
 function Bag({ }) {
-    const product = useSelector((state) => state.product);
+    const product = useSelector((state) => state.auth.product);
     const parse = JSON.parse(localStorage.getItem('total'));
     const [activeLinkName, setActiveLinkName] = useState('order');
     const [activeTextName, setActiveTextName] = useState('l');
@@ -26,6 +26,8 @@ function Bag({ }) {
     useEffect(() => {
         localStorage.setItem('total', total);
     }, [total])
+
+    console.log(product)
 
     useEffect(() => {
         setTotal(parse)

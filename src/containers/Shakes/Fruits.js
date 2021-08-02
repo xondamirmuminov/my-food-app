@@ -11,15 +11,15 @@ export default function Fruits({ bagHandler }) {
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
     const [products, setProducts] = useState([]);
-    const product = useSelector((state) => state.product);
+    const product = useSelector((state) => state.auth.product);
 
     const clickHandler = data => {
         bagHandler();
-
         if (product.find(item => item?._id === data?._id)) {
             let findProduct = product.find(item => item?._id === data?._id);
             dispatch(productAction(findProduct?.amount + 1))
         } else {
+            console.log(data, 'salom')
             dispatch(productAction(data))
         }
     }
