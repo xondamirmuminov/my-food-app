@@ -27,8 +27,6 @@ function Bag({ }) {
         localStorage.setItem('total', total);
     }, [total])
 
-    console.log(product)
-
     useEffect(() => {
         setTotal(parse)
         console.log(parseProduct)
@@ -89,7 +87,9 @@ function Bag({ }) {
                             <div className="bag__inner-product-item">
                                 <p>{item?.name}</p>
                                 <div>
-                                    <Input add={handleAddCost} name={item?.name} id={item._id} remove={handleRemovedCost} parse={parseProduct} cost={item?.salePrice} />
+                                    {
+                                        item.name ? <Input add={handleAddCost} name={item?.name} id={item._id} remove={handleRemovedCost} parse={parseProduct} cost={item?.salePrice} /> : null
+                                    }
                                 </div>
                             </div>
                         ))}

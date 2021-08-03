@@ -13,7 +13,6 @@ export default function Input({ handle, cost, add, remove, name, id }) {
 
     const plusValue = () => {
         setProduct(product + 1)
-        parseCost.push(cost);
         localStorage.totalProduct = JSON.stringify(parseCost)
         add(cost);
     }

@@ -22,7 +22,7 @@ export default function App(props) {
 
   return (
     <div>
-      <Link to="/sign-up">Sign Up</Link>
+      <Link exact to="/sign-up">Sign Up</Link>
       <Redirect to="/login" />
       <Switch>
         <Route path="/login" exact component={Login} />

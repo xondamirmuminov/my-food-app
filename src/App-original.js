@@ -80,9 +80,6 @@ class App extends Component {
                 buttonText="Sign out"
                 onLogoutSuccess={this.onLogoutSuccess}
                 icon={false}
-              // render={() => (
-              //   <FaSignOutAlt onClick={} className="sidebar__link-icon" />
-              // )}
               >
               </GoogleLogout>}
             />

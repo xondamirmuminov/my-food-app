@@ -13,7 +13,7 @@ export default function App() {
     return (<div className="app">
       <Header />
       <div className='main-content'>
-        <Redirect to="/" />
+        <Redirect exact to="/" />
         <Switch>
           {
             protectedURLs.map((item, index) => <ProtectedRoutes key={index} {...item} />)

@@ -18,6 +18,8 @@ const initialState = {
   ]
 };
 
+console.log('Component mouted');
+
 const authReducer = (state = initialState, action) => {
   if (
     action.type === actionTypes.AUTH_SIGN_IN ||
@@ -36,7 +38,7 @@ const authReducer = (state = initialState, action) => {
       product: [
         ...state.product,
         {
-          ...action.payload.product
+          ...action.payload
         }
       ]
     }
