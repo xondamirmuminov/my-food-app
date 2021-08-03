@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useRef } from 'react';
 import Axios from '../../utils/axios';
 import { Sign } from '../../style/styleSignUp';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 import imageIceCream from '../../assets/auth/ice-cream.svg';
 import imageAnimated from '../../assets/auth/chef-animated.svg';
 import { useDispatch } from 'react-redux';
@@ -34,8 +34,8 @@ export default function SignUp() {
         const { success, token, error, msg } = data;
 
         if (success) {
-          dispatch(signUpAction(data));
           history.push("/")
+          dispatch(signUpAction(data));
         } else if (!success) {
           console.log(error)
           setMessage(error || msg);

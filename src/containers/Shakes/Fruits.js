@@ -15,14 +15,7 @@ export default function Fruits({ bagHandler }) {
 
     const clickHandler = data => {
         bagHandler();
-        dispatch(productAction(data.amount = 1))
-        if (product.find(item => item?._id === data?._id)) {
-            let findProduct = product.find(item => item?._id === data?._id);
-            dispatch(productAction(findProduct?.amount + 1))
-        } else {
-            console.log(data, 'salom')
-            dispatch(productAction(data))
-        }
+        dispatch(productAction(data))
     }
 
     const getProduct = async () => {

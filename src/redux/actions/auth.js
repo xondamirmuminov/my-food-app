@@ -22,6 +22,6 @@ export const signOutAction = () => {
 export const productAction = (data) => {
   return {
     type: actionTypes.PRODUCT,
-    payload: data,
+    payload: { ...data, amount: 1 },
   }
 }
