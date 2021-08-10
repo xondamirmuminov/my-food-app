@@ -33,18 +33,14 @@ const authReducer = (state = initialState, action) => {
   } else if (action.type === actionTypes.AUTH_SIGN_OUT) {
     return initialState;
   } else if (action.type === actionTypes.PRODUCT) {
-    const hasProduct = state.product.find(item => action.payload._id == item._id)
+    const hasProduct = state.product?.find(item => action.payload?._id == item?._id)
     if (hasProduct) {
       const updated = state.product.map(item => {
         if (item._id == action.payload._id) {
           return { ...item, amount: item.amount + 1 };
         }
-        return item;
+        console.log(state.product)
       })
-      return {
-        ...state,
-        product: updated
-      }
     }
     return {
       ...state,

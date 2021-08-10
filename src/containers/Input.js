@@ -1,42 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { FaMinus, FaPlus } from 'react-icons/all';
 import { InputInner } from '../style/StyleAll';
+import { useSelector, useDispatch } from 'react-redux';
+import { productAction } from '../redux/actions/auth';
 
 export default function Input({ handle, cost, add, remove, name, id }) {
-    let amount = JSON.parse(localStorage.getItem(id))
-    const [product, setProduct] = useState(amount ?? 1);
-    const parseCost = JSON.parse(localStorage.getItem('totalProduct'));
+    const reduxProduct = useSelector((state) => state.auth.product);
+    const dispatch = useDispatch();
+    let findProduct = reduxProduct.find(item => item._id == id);
+    const [product, setProduct] = useState(findProduct.amount ?? 1);
 
     const handleValue = (e) => {
         setProduct(e.target.value);
-    }
+    };
 
     const plusValue = () => {
         setProduct(product + 1)
-        localStorage.totalProduct = JSON.stringify(parseCost)
         add(cost);
-    }
+        dispatch(productAction(findProduct, product))
+    };
     const minusValue = () => {
         setProduct(product - 1)
         remove(cost);
-        if (product == 0) {
-            let parseFruits = JSON.parse(localStorage.getItem('fruits'));
-            let findId = parseFruits.find(item => item._id == id.toString());
-            let filterParse = parseFruits.filter(item => item !== findId);
-            localStorage.setItem('fruits', JSON.stringify(filterParse));
-        }
-    }
-    useEffect(() => {
-        setProduct(amount)
-    }, [])
+        dispatch(productAction(findProduct, product))
+    };
 
     useEffect(() => {
-        localStorage.setItem(id, JSON.stringify(product));
-    }, [product])
+        setProduct(findProduct.amount)
+    }, []);
 
-
-    useEffect(() => {
-    }, [product])
 
     return (
         <InputInner>
